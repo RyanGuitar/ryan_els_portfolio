@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ryan Els — Social Media Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F5F2ED;
+    --ink: #1A1714;
+    --muted: #7A7370;
+    --accent: #C84B2F;
+    --rule: #D9D4CE;
+    --card: #EFEBE5;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { font-size: 16px; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── LAYOUT ── */
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  section { padding: 4rem 0; border-top: 1px solid var(--rule); }
+
+  /* ── HEADER ── */
+  header {
+    padding: 5rem 0 3rem;
+  }
+
+  .header-inner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: end;
+  }
+
+  .eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards;
+  }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.1s ease forwards;
+  }
+
+  .header-tagline {
+    font-size: 1.15rem;
+    color: var(--muted);
+    max-width: 480px;
+    margin-top: 1.25rem;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.2s ease forwards;
+  }
+
+  .header-contact {
+    text-align: right;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    line-height: 1.9;
+    color: var(--muted);
+    opacity: 0;
+    animation: fadeUp 0.6s 0.3s ease forwards;
+  }
+
+  .header-contact a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule);
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .header-contact a:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  /* ── STATS BAR ── */
+  .stats {
+    background: var(--ink);
+    color: var(--bg);
+    padding: 3rem 0;
+    border-top: none;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  .stat {
+    padding: 2rem;
+    background: var(--ink);
+    position: relative;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards;
+  }
+
+  .stat:nth-child(1) { animation-delay: 0.1s; }
+  .stat:nth-child(2) { animation-delay: 0.2s; }
+  .stat:nth-child(3) { animation-delay: 0.3s; }
+
+  .stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    line-height: 1;
+    color: #fff;
+  }
+
+  .stat-num span {
+    color: var(--accent);
+  }
+
+  .stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #8a8480;
+    margin-top: 0.5rem;
+  }
+
+  .stat-sub {
+    font-size: 0.82rem;
+    color: #8a8480;
+    margin-top: 0.25rem;
+  }
+
+  /* ── SECTION TITLES ── */
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 2rem;
+  }
+
+  h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+
+  /* ── ABOUT ── */
+  .about-body {
+    font-size: 1.1rem;
+    line-height: 1.75;
+    max-width: 680px;
+  }
+
+  .about-body p + p {
+    margin-top: 1rem;
+  }
+
+  .highlight {
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  /* ── WORK ── */
+  .work-grid {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .work-card {
+    background: var(--card);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+  }
+
+  .work-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--accent);
+  }
+
+  .work-card:hover {
+    transform: translateX(4px);
+  }
+
+  .work-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.75rem;
+  }
+
+  .work-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.3rem;
+  }
+
+  .work-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+  }
+
+  .work-desc {
+    font-size: 0.95rem;
+    color: var(--muted);
+    margin-bottom: 1.25rem;
+    line-height: 1.6;
+  }
+
+  .work-wins {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .work-wins li {
+    font-size: 0.9rem;
+    padding-left: 1.2rem;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .work-wins li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 0.8rem;
+  }
+
+  /* ── SKILLS ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+
+  .skill-block {
+    background: var(--card);
+    padding: 1.5rem;
+    border-bottom: 2px solid var(--rule);
+    transition: border-color 0.2s;
+  }
+
+  .skill-block:hover {
+    border-color: var(--accent);
+  }
+
+  .skill-name {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+
+  .skill-desc {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ── THE STORY ── */
+  .story-body {
+    font-size: 1rem;
+    line-height: 1.8;
+    max-width: 620px;
+    color: var(--muted);
+  }
+
+  .story-body strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 3rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.3rem;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+  }
+
+  .footer-links a {
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover {
+    color: var(--accent);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .header-inner { grid-template-columns: 1fr; }
+    .header-contact { text-align: left; }
+    .stats-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="container">
+  <header>
+    <div class="header-inner">
+      <div>
+        <p class="eyebrow">Social Media Manager · Developer Audience Specialist</p>
+        <h1>Ryan Els</h1>
+        <p class="header-tagline">I build tech audiences from scratch. No ads, no fluff — just content that engineers actually want to read.</p>
+      </div>
+      <div class="header-contact">
+        <div>Western Cape, South Africa</div>
+        <div><a href="mailto:ryanelsguitar@gmail.com">ryanelsguitar@gmail.com</a></div>
+        <div><a href="tel:+27716301921">+27 71 630 1921</a></div>
+        <div><a href="https://linkedin.com/in/ryan-els" target="_blank">LinkedIn</a></div>
+        <div><a href="https://x.com/ryanels" target="_blank">X / Twitter</a></div>
+      </div>
+    </div>
+  </header>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat">
+        <div class="stat-num">49<span>M</span></div>
+        <div class="stat-label">Organic views</div>
+        <div class="stat-sub">Lingo.dev — 10 months, zero ad spend</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">110<span>M+</span></div>
+        <div class="stat-label">Personal impressions</div>
+        <div class="stat-sub">Personal brand — built in under a year</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">0<span>→</span>19<span>k</span></div>
+        <div class="stat-label">Followers grown</div>
+        <div class="stat-sub">Two accounts, both built from zero</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div class="container">
+  <section>
+    <p class="section-label">About</p>
+    <div class="about-body">
+      <p>I got my last job because a tech CEO found my personal account and reached out. That's the kind of content I make — the kind people in the industry actually follow.</p>
+      <p>I understand developer culture from the inside. Seven years of self-directed study in JavaScript and web development means I can talk about code like someone who builds things, not someone who Googled the talking points. That's why the content lands.</p>
+      <p>Before social media, I spent 13 years as a sergeant in the South African Police Service and nearly a decade in security. Both taught me the same thing: <span class="highlight">how people behave in groups, under pressure, and what it takes to earn real trust.</span> Those skills translate directly to community management.</p>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section>
+    <p class="section-label">Work</p>
+    <div class="work-grid">
+
+      <div class="work-card">
+        <div class="work-header">
+          <span class="work-title">Social Media Manager · Lingo.dev</span>
+          <span class="work-meta">Mar 2025 – Mar 2026 · Remote</span>
+        </div>
+        <p class="work-desc">Took the company's social presence from nothing to a genuine developer community. No paid promotion, no gimmicks.</p>
+        <ul class="work-wins">
+          <li>Grew from zero to 10.8k followers and 49.2M organic views in 10 months</li>
+          <li>Multiple posts exceeded 1.2M views by targeting trends engineers actually care about</li>
+          <li>Managed community replies with technical accuracy — building trust with senior engineers, not just impressions</li>
+          <li>Stayed ahead of industry shifts, including the rise of AI-assisted coding, to keep the brand credible in fast-moving conversations</li>
+        </ul>
+      </div>
+
+      <div class="work-card">
+        <div class="work-header">
+          <span class="work-title">Technical Content Creator · Personal Brand</span>
+          <span class="work-meta">2024 – Present</span>
+        </div>
+        <p class="work-desc">Built a tech-focused personal account that became the direct reason I was hired. An inbound offer — the CEO came to me.</p>
+        <ul class="work-wins">
+          <li>Grew to 19k+ followers and 110M+ impressions in under a year</li>
+          <li>Top posts hit 2.8M and 2.1M views by focusing on specific engineering debates: array indexing, library bloat, tooling wars</li>
+          <li>Engaged as a hobbyist programmer, not a marketer — developers followed because I spoke as a peer</li>
+        </ul>
+      </div>
+
+      <div class="work-card">
+        <div class="work-header">
+          <span class="work-title">Sergeant · South African Police Service</span>
+          <span class="work-meta">2002 – 2015 · South Africa</span>
+        </div>
+        <p class="work-desc">13 years reading group sentiment, managing high-pressure situations, and building trust with communities under difficult circumstances.</p>
+        <ul class="work-wins">
+          <li>Developed a sharp instinct for how people behave in groups — now applied to digital community management</li>
+          <li>Communicated clearly under pressure with high stakes: a skill that transfers directly to brand crisis management</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section>
+    <p class="section-label">Skills</p>
+    <div class="skills-grid">
+      <div class="skill-block">
+        <p class="skill-name">Organic Growth</p>
+        <p class="skill-desc">Building audiences from zero without paid promotion. Twice.</p>
+      </div>
+      <div class="skill-block">
+        <p class="skill-name">Developer Content</p>
+        <p class="skill-desc">Content that resonates with engineers because it's made by someone who codes.</p>
+      </div>
+      <div class="skill-block">
+        <p class="skill-name">Community Management</p>
+        <p class="skill-desc">Replies that build trust. Not canned responses — actual engagement with technical accuracy.</p>
+      </div>
+      <div class="skill-block">
+        <p class="skill-name">Trend Analysis</p>
+        <p class="skill-desc">Spotting what developers are arguing about before it peaks, and creating content for it.</p>
+      </div>
+      <div class="skill-block">
+        <p class="skill-name">Technical Literacy</p>
+        <p class="skill-desc">7 years of self-directed JavaScript and web development study. Enough to talk like a developer.</p>
+      </div>
+      <div class="skill-block">
+        <p class="skill-name">Brand Voice</p>
+        <p class="skill-desc">Writing for brands that need to sound like a person, not a press release.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE STORY -->
+  <section>
+    <p class="section-label">The short version</p>
+    <h2>Not a typical hire.</h2>
+    <div class="story-body">
+      <p>I didn't come up through marketing. I spent two decades in high-stakes environments — policing, security — learning how communities work and how to earn trust in rooms where people don't give it easily.</p>
+      <p style="margin-top:1rem;">I taught myself to code because I was curious. That curiosity led to a personal tech account, which led to <strong>110M impressions</strong>, which led to a tech CEO finding me and offering me a job without me applying.</p>
+      <p style="margin-top:1rem;">I understand why developers roll their eyes at most brand content. I make the kind they don't.</p>
+    </div>
+  </section>
+
+</div>
+
+<!-- FOOTER -->
+<div class="container">
+  <footer>
+    <span class="footer-name">Ryan Els</span>
+    <div class="footer-links">
+      <a href="mailto:ryanelsguitar@gmail.com">Email</a>
+      <a href="https://linkedin.com/in/ryan-els" target="_blank">LinkedIn</a>
+      <a href="https://x.com/ryanels" target="_blank">X</a>
+    </div>
+  </footer>
+</div>
+
+</body>
+</html>
