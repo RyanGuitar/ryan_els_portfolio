@@ -30,333 +30,119 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* ── LAYOUT ── */
-  .container {
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 0 2rem;
-  }
-
+  .container { max-width: 860px; margin: 0 auto; padding: 0 2rem; }
   section { padding: 4rem 0; border-top: 1px solid var(--rule); }
 
-  /* ── HEADER ── */
-  header {
-    padding: 5rem 0 3rem;
-  }
+  /* HEADER */
+  header { padding: 5rem 0 3rem; }
+  .header-inner { display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: end; }
+  .eyebrow { font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+  h1 { font-family: 'DM Serif Display', serif; font-size: clamp(3rem, 8vw, 5.5rem); line-height: 1; letter-spacing: -0.02em; }
+  .header-tagline { font-size: 1.15rem; color: var(--muted); max-width: 480px; margin-top: 1.25rem; }
+  .header-contact { text-align: right; font-family: 'DM Mono', monospace; font-size: 0.78rem; line-height: 1.9; color: var(--muted); }
+  .header-contact a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); transition: border-color 0.2s, color 0.2s; }
+  .header-contact a:hover { color: var(--accent); border-color: var(--accent); }
 
-  .header-inner {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 2rem;
-    align-items: end;
-  }
+  /* STATS */
+  .stats { background: var(--ink); color: var(--bg); padding: 3rem 0; }
+  .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .stat { padding: 2rem; background: var(--ink); }
+  .stat-num { font-family: 'DM Serif Display', serif; font-size: clamp(2.2rem, 5vw, 3.5rem); line-height: 1; color: #fff; }
+  .stat-num span { color: var(--accent); }
+  .stat-label { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: #8a8480; margin-top: 0.5rem; }
+  .stat-sub { font-size: 0.82rem; color: #8a8480; margin-top: 0.25rem; }
 
-  .eyebrow {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.75rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 1rem;
-    opacity: 0;
-    animation: fadeUp 0.6s ease forwards;
-  }
+  /* SECTION LABELS & TITLES */
+  .section-label { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 2rem; }
+  h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.8rem, 4vw, 2.6rem); line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
 
-  h1 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(3rem, 8vw, 5.5rem);
-    line-height: 1;
-    letter-spacing: -0.02em;
-    opacity: 0;
-    animation: fadeUp 0.6s 0.1s ease forwards;
-  }
+  /* ABOUT */
+  .about-body { font-size: 1.1rem; line-height: 1.75; max-width: 680px; }
+  .about-body p + p { margin-top: 1rem; }
+  .highlight { color: var(--accent); font-style: italic; }
 
-  .header-tagline {
-    font-size: 1.15rem;
-    color: var(--muted);
-    max-width: 480px;
-    margin-top: 1.25rem;
-    opacity: 0;
-    animation: fadeUp 0.6s 0.2s ease forwards;
-  }
+  /* WORK */
+  .work-grid { display: grid; gap: 1.5rem; }
+  .work-card { background: var(--card); padding: 2rem; position: relative; overflow: hidden; transition: transform 0.2s ease; }
+  .work-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--accent); }
+  .work-card:hover { transform: translateX(4px); }
+  .work-header { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.75rem; }
+  .work-title { font-family: 'DM Serif Display', serif; font-size: 1.3rem; }
+  .work-meta { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--muted); letter-spacing: 0.06em; white-space: nowrap; }
+  .work-desc { font-size: 0.95rem; color: var(--muted); margin-bottom: 1.25rem; line-height: 1.6; }
+  .work-wins { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .work-wins li { font-size: 0.9rem; padding-left: 1.2rem; position: relative; line-height: 1.5; }
+  .work-wins li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 0.8rem; }
 
-  .header-contact {
-    text-align: right;
-    font-family: 'DM Mono', monospace;
-    font-size: 0.78rem;
-    line-height: 1.9;
-    color: var(--muted);
-    opacity: 0;
-    animation: fadeUp 0.6s 0.3s ease forwards;
-  }
+  /* FEATURED CONTENT — memes only, 4 Personal + 4 Lingo.dev */
+  .featured-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+  .featured-card { background: var(--card); padding: 1.25rem; border-radius: 12px; overflow: hidden; transition: transform 0.2s ease; }
+  .featured-card:hover { transform: translateY(-4px); }
+  .featured-image img { width: 100%; height: auto; max-height: 260px; object-fit: contain; border-radius: 8px; display: block; }
+  .featured-caption { font-size: 0.95rem; line-height: 1.5; margin-top: 1rem; }
+  .featured-meta { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--accent); margin-top: 0.5rem; }
 
-  .header-contact a {
-    color: var(--ink);
-    text-decoration: none;
-    border-bottom: 1px solid var(--rule);
-    transition: border-color 0.2s, color 0.2s;
-  }
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
+  .skill-block { background: var(--card); padding: 1.5rem; border-bottom: 2px solid var(--rule); transition: border-color 0.2s; }
+  .skill-block:hover { border-color: var(--accent); }
+  .skill-name { font-family: 'DM Mono', monospace; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
+  .skill-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.5; }
 
-  .header-contact a:hover {
-    color: var(--accent);
-    border-color: var(--accent);
-  }
-
-  /* ── STATS BAR ── */
-  .stats {
-    background: var(--ink);
-    color: var(--bg);
-    padding: 3rem 0;
-    border-top: none;
-  }
-
-  .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
-  }
-
-  .stat {
-    padding: 2rem;
-    background: var(--ink);
-    position: relative;
-    opacity: 0;
-    animation: fadeUp 0.6s ease forwards;
-  }
-
-  .stat:nth-child(1) { animation-delay: 0.1s; }
-  .stat:nth-child(2) { animation-delay: 0.2s; }
-  .stat:nth-child(3) { animation-delay: 0.3s; }
-
-  .stat-num {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(2.2rem, 5vw, 3.5rem);
-    line-height: 1;
-    color: #fff;
-  }
-
-  .stat-num span {
-    color: var(--accent);
-  }
-
-  .stat-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: #8a8480;
-    margin-top: 0.5rem;
-  }
-
-  .stat-sub {
-    font-size: 0.82rem;
-    color: #8a8480;
-    margin-top: 0.25rem;
-  }
-
-  /* ── SECTION TITLES ── */
-  .section-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 2rem;
-  }
-
-  h2 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(1.8rem, 4vw, 2.6rem);
-    line-height: 1.15;
-    letter-spacing: -0.02em;
-    margin-bottom: 1.5rem;
-  }
-
-  /* ── ABOUT ── */
-  .about-body {
-    font-size: 1.1rem;
-    line-height: 1.75;
+  .testimonial {
+    background: var(--card);
+    padding: 2.5rem;
+    border-radius: 12px;
+    font-style: italic;
+    font-size: 1.05rem;
+    line-height: 1.7;
     max-width: 680px;
   }
-
-  .about-body p + p {
-    margin-top: 1rem;
-  }
-
-  .highlight {
-    color: var(--accent);
-    font-style: italic;
-  }
-
-  /* ── WORK ── */
-  .work-grid {
-    display: grid;
-    gap: 1.5rem;
-  }
-
-  .work-card {
-    background: var(--card);
-    padding: 2rem;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.2s ease;
-  }
-
-  .work-card::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 0; bottom: 0;
-    width: 3px;
-    background: var(--accent);
-  }
-
-  .work-card:hover {
-    transform: translateX(4px);
-  }
-
-  .work-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 1rem;
-    flex-wrap: wrap;
-    margin-bottom: 0.75rem;
-  }
-
-  .work-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.3rem;
-  }
-
-  .work-meta {
+  .testimonial cite {
+    display: block;
+    margin-top: 2rem;
+    font-style: normal;
     font-family: 'DM Mono', monospace;
-    font-size: 0.72rem;
-    color: var(--muted);
-    letter-spacing: 0.06em;
-    white-space: nowrap;
-  }
-
-  .work-desc {
-    font-size: 0.95rem;
-    color: var(--muted);
-    margin-bottom: 1.25rem;
-    line-height: 1.6;
-  }
-
-  .work-wins {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .work-wins li {
-    font-size: 0.9rem;
-    padding-left: 1.2rem;
-    position: relative;
-    line-height: 1.5;
-  }
-
-  .work-wins li::before {
-    content: '→';
-    position: absolute;
-    left: 0;
+    font-size: 0.85rem;
     color: var(--accent);
-    font-size: 0.8rem;
   }
 
-  /* ── SKILLS ── */
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 1rem;
-  }
-
-  .skill-block {
-    background: var(--card);
-    padding: 1.5rem;
-    border-bottom: 2px solid var(--rule);
-    transition: border-color 0.2s;
-  }
-
-  .skill-block:hover {
-    border-color: var(--accent);
-  }
-
-  .skill-name {
+  .download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent);
+    color: white;
     font-family: 'DM Mono', monospace;
     font-size: 0.78rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 0.5rem;
-  }
-
-  .skill-desc {
-    font-size: 0.88rem;
-    color: var(--muted);
-    line-height: 1.5;
-  }
-
-  /* ── THE STORY ── */
-  .story-body {
-    font-size: 1rem;
-    line-height: 1.8;
-    max-width: 620px;
-    color: var(--muted);
-  }
-
-  .story-body strong {
-    color: var(--ink);
-    font-weight: 500;
-  }
-
-  /* ── FOOTER ── */
-  footer {
-    border-top: 1px solid var(--rule);
-    padding: 3rem 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  .footer-name {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.3rem;
-  }
-
-  .footer-links {
-    display: flex;
-    gap: 1.5rem;
-    font-family: 'DM Mono', monospace;
-    font-size: 0.75rem;
-    letter-spacing: 0.08em;
-  }
-
-  .footer-links a {
-    color: var(--muted);
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
     text-decoration: none;
-    transition: color 0.2s;
+    transition: all 0.2s ease;
+  }
+  .download-btn:hover {
+    background: #a13c27;
+    transform: translateY(-1px);
   }
 
-  .footer-links a:hover {
-    color: var(--accent);
-  }
+  .story-body { font-size: 1rem; line-height: 1.8; max-width: 620px; color: var(--muted); }
+  .story-body strong { color: var(--ink); font-weight: 500; }
 
-  /* ── ANIMATIONS ── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(16px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
+  footer { border-top: 1px solid var(--rule); padding: 3rem 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+  .footer-name { font-family: 'DM Serif Display', serif; font-size: 1.3rem; }
+  .footer-links { display: flex; gap: 1.5rem; font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.08em; }
+  .footer-links a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--accent); }
 
-  /* ── RESPONSIVE ── */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
   @media (max-width: 640px) {
     .header-inner { grid-template-columns: 1fr; }
     .header-contact { text-align: left; }
     .stats-grid { grid-template-columns: 1fr; }
     footer { flex-direction: column; align-items: flex-start; }
+    .featured-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -397,9 +183,9 @@
         <div class="stat-sub">Personal brand — built in under a year</div>
       </div>
       <div class="stat">
-        <div class="stat-num">0<span>→</span>19<span>k</span></div>
+        <div class="stat-num">0<span>→</span>29.8<span>k</span></div>
         <div class="stat-label">Followers grown</div>
-        <div class="stat-sub">Two accounts, both built from zero</div>
+        <div class="stat-sub">Personal brand (19k) + Lingo.dev (10.8k) — both from zero</div>
       </div>
     </div>
   </div>
@@ -420,19 +206,19 @@
   <section>
     <p class="section-label">Work</p>
     <div class="work-grid">
-
       <div class="work-card">
         <div class="work-header">
           <span class="work-title">Social Media Manager · Lingo.dev</span>
-          <span class="work-meta">Mar 2025 – Mar 2026 · Remote</span>
+          <span class="work-meta">March 2025 – March 2026 · Remote</span>
         </div>
-        <p class="work-desc">Took the company's social presence from nothing to a genuine developer community. No paid promotion, no gimmicks.</p>
+        <p class="work-desc">Built the company's social presence from zero to a genuine developer community. No paid promotion, no gimmicks.</p>
         <ul class="work-wins">
-          <li>Grew from zero to 10.8k followers and 49.2M organic views in 10 months</li>
-          <li>Multiple posts exceeded 1.2M views by targeting trends engineers actually care about</li>
-          <li>Managed community replies with technical accuracy — building trust with senior engineers, not just impressions</li>
-          <li>Stayed ahead of industry shifts, including the rise of AI-assisted coding, to keep the brand credible in fast-moving conversations</li>
+          <li>Built the company's social presence from zero to 10.8k followers and 49.2M organic views in 10 months, with no paid promotion.</li>
+          <li>Created content that went viral repeatedly within the developer community, with several posts exceeding 1.2M views, by identifying trends that engineers actually care about.</li>
+          <li>Managed community replies with technical accuracy and personality, building genuine trust with senior engineers and developers.</li>
+          <li>Tracked industry shifts — including the rise of AI-assisted coding — to keep the brand relevant and credible in fast-moving conversations.</li>
         </ul>
+        <p style="margin-top:1.5rem; font-size:0.8rem; color:var(--muted);">See Featured Content below for example posts and screenshots.</p>
       </div>
 
       <div class="work-card">
@@ -442,22 +228,126 @@
         </div>
         <p class="work-desc">Built a tech-focused personal account that became the direct reason I was hired. An inbound offer — the CEO came to me.</p>
         <ul class="work-wins">
-          <li>Grew to 19k+ followers and 110M+ impressions in under a year</li>
-          <li>Top posts hit 2.8M and 2.1M views by focusing on specific engineering debates: array indexing, library bloat, tooling wars</li>
-          <li>Engaged as a hobbyist programmer, not a marketer — developers followed because I spoke as a peer</li>
+          <li>Grew a personal tech-focused account to 19k+ followers and 110M+ impressions in a year — the account that led directly to an inbound job offer from a tech CEO.</li>
+          <li>Consistently produced viral content by focusing on specific engineering debates (array indexing, library bloat, tooling wars), with top posts reaching 2.8M and 2.1M views.</li>
+          <li>Built a trusted audience by engaging as a hobbyist programmer rather than a marketer — speaking to developers as a peer, not a brand.</li>
+        </ul>
+        <p style="margin-top:1.5rem; font-size:0.8rem; color:var(--muted);">See Featured Content below for example posts and screenshots.</p>
+      </div>
+
+      <div class="work-card">
+        <div class="work-header">
+          <span class="work-title">Sergeant · South African Police Service (SAPS)</span>
+          <span class="work-meta">2002 – 2015 · South Africa</span>
+        </div>
+        <p class="work-desc">Served 13 years managing high-pressure situations, complex interpersonal dynamics, and public-facing community relations.</p>
+        <ul class="work-wins">
+          <li>Developed strong skills in reading group sentiment, de-escalating conflict, and communicating clearly under pressure — all directly applicable to community management.</li>
         </ul>
       </div>
 
       <div class="work-card">
         <div class="work-header">
-          <span class="work-title">Sergeant · South African Police Service</span>
-          <span class="work-meta">2002 – 2015 · South Africa</span>
+          <span class="work-title">Armed Response Officer · Security Industry</span>
+          <span class="work-meta">2017 – 2025 · South Africa</span>
         </div>
-        <p class="work-desc">13 years reading group sentiment, managing high-pressure situations, and building trust with communities under difficult circumstances.</p>
+        <p class="work-desc">Maintained strict operational standards and evidence-based reporting over 7 years.</p>
         <ul class="work-wins">
-          <li>Developed a sharp instinct for how people behave in groups — now applied to digital community management</li>
-          <li>Communicated clearly under pressure with high stakes: a skill that transfers directly to brand crisis management</li>
+          <li>Maintained strict operational standards and evidence-based reporting over 7 years.</li>
+          <li>Built a 20-year foundation in understanding how communities behave — a skill now applied to digital audience building and engagement.</li>
         </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED CONTENT — memes only (4 Personal + 4 Lingo.dev) -->
+  <section>
+    <p class="section-label">Featured Content</p>
+    <h2>Viral moments that actually moved the needle.</h2>
+    <p style="max-width:620px; margin-bottom:2rem; font-size:1.05rem; color:var(--muted);">Click any post to open the original on X (includes live stats).</p>
+    
+    <div class="featured-grid">
+
+      <!-- PERSONAL BRAND (4 memes) -->
+      <div class="featured-card">
+        <a href="https://x.com/ryanels/status/1887159542422614169" target="_blank" style="text-decoration:none;color:inherit;">
+          <div class="featured-image">
+            <img src="personal-2.1m.png" alt="2.1M views post">
+          </div>
+          <div class="featured-caption">2.1M views • Now he has gone too far</div>
+          <div class="featured-meta">Personal brand</div>
+        </a>
+      </div>
+
+      <div class="featured-card">
+        <a href="https://x.com/ryanels/status/1838095962734285218" target="_blank" style="text-decoration:none;color:inherit;">
+          <div class="featured-image">
+            <img src="personal-1.2m.png" alt="1.2M views post">
+          </div>
+          <div class="featured-caption">1.2M views • Why does this library even exist</div>
+          <div class="featured-meta">Personal brand</div>
+        </a>
+      </div>
+
+      <div class="featured-card">
+        <a href="https://x.com/ryanels/status/1801898008755241251" target="_blank" style="text-decoration:none;color:inherit;">
+          <div class="featured-image">
+            <img src="personal-1.9m.png" alt="1.9M views post">
+          </div>
+          <div class="featured-caption">1.9M views • AI revealed</div>
+          <div class="featured-meta">Personal brand</div>
+        </a>
+      </div>
+
+      <div class="featured-card">
+        <a href="https://x.com/ryanels/status/1807822514376397207" target="_blank" style="text-decoration:none;color:inherit;">
+          <div class="featured-image">
+            <img src="personal-943k.png" alt="943K views post">
+          </div>
+          <div class="featured-caption">943K views • Facebook's Cookie Policy</div>
+          <div class="featured-meta">Personal brand</div>
+        </a>
+      </div>
+
+      <!-- LINGO.DEV (4 memes) -->
+      <div class="featured-card">
+        <a href="https://x.com/lingodotdev/status/1925456886926569640" target="_blank" style="text-decoration:none;color:inherit;">
+          <div class="featured-image">
+            <img src="lingo-1.2m.png" alt="1.2M views post">
+          </div>
+          <div class="featured-caption">1.2M views • Goodbye StackOverflow</div>
+          <div class="featured-meta">Lingo.dev</div>
+        </a>
+      </div>
+
+      <div class="featured-card">
+        <a href="https://x.com/lingodotdev/status/1963483263743176762" target="_blank" style="text-decoration:none;color:inherit;">
+          <div class="featured-image">
+            <img src="lingo-682k.png" alt="682K views post">
+          </div>
+          <div class="featured-caption">682K views • Linux nailed it</div>
+          <div class="featured-meta">Lingo.dev</div>
+        </a>
+      </div>
+
+      <div class="featured-card">
+        <a href="https://x.com/lingodotdev/status/1984567619975069937" target="_blank" style="text-decoration:none;color:inherit;">
+          <div class="featured-image">
+            <img src="lingo-566k.png" alt="566K views post">
+          </div>
+          <div class="featured-caption">566K views • Rate my sorting algorithm</div>
+          <div class="featured-meta">Lingo.dev</div>
+        </a>
+      </div>
+
+      <div class="featured-card">
+        <a href="https://x.com/lingodotdev/status/2029286136846098619" target="_blank" style="text-decoration:none;color:inherit;">
+          <div class="featured-image">
+            <img src="lingo-314k.png" alt="314K views post">
+          </div>
+          <div class="featured-caption">314K views • Imagine trying to install Windows 11 like this</div>
+          <div class="featured-meta">Lingo.dev</div>
+        </a>
       </div>
 
     </div>
@@ -472,12 +362,12 @@
         <p class="skill-desc">Building audiences from zero without paid promotion. Twice.</p>
       </div>
       <div class="skill-block">
-        <p class="skill-name">Developer Content</p>
-        <p class="skill-desc">Content that resonates with engineers because it's made by someone who codes.</p>
-      </div>
-      <div class="skill-block">
         <p class="skill-name">Community Management</p>
         <p class="skill-desc">Replies that build trust. Not canned responses — actual engagement with technical accuracy.</p>
+      </div>
+      <div class="skill-block">
+        <p class="skill-name">Developer Content</p>
+        <p class="skill-desc">Content that resonates with engineers because it's made by someone who codes.</p>
       </div>
       <div class="skill-block">
         <p class="skill-name">Trend Analysis</p>
@@ -485,13 +375,32 @@
       </div>
       <div class="skill-block">
         <p class="skill-name">Technical Literacy</p>
-        <p class="skill-desc">7 years of self-directed JavaScript and web development study. Enough to talk like a developer.</p>
+        <p class="skill-desc">7 years of self-directed study in JavaScript, web development, and web architecture.</p>
       </div>
       <div class="skill-block">
         <p class="skill-name">Brand Voice</p>
         <p class="skill-desc">Writing for brands that need to sound like a person, not a press release.</p>
       </div>
     </div>
+  </section>
+
+  <!-- RECOMMENDATION -->
+  <section>
+    <p class="section-label">Recommendation</p>
+    <div class="testimonial">
+      “I’m writing to recommend Ryan Els. I managed him directly during his time as Social Media Manager at Lingo.dev.<br><br>
+      Ryan joined us from a completely different background — 20 years in law enforcement and private security. That turned out to be an asset. He reads people well, earns trust quickly, and brings a discipline to his work that’s uncommon in social media.<br><br>
+      The results speak for themselves. He grew our X account from near-zero to 10.8k followers and 49 million impressions in under 12 months, entirely organic, without paid distribution. He did this with a developer audience, which is one of the hardest groups to market to authentically. When we surveyed our followers, they rated the account 9 out of 10 on average.<br><br>
+      What makes Ryan effective is that he’s genuinely embedded in the world he’s speaking to. He programs on the side, follows the tools, and understands the culture. His content feels like it comes from a peer. That’s not something you can fake, and it’s the reason the growth happened.<br><br>
+      I’d recommend Ryan without hesitation for any role where a technical audience needs to be reached authentically.”
+      <cite>— Max Prilutskiy, CEO & Co-founder, Lingo.dev<br>March 20, 2026</cite>
+    </div>
+    
+    <p style="margin-top: 1.5rem;">
+      <a href="recommendation-letter.pdf" download class="download-btn">
+        📄 Download full recommendation letter (PDF)
+      </a>
+    </p>
   </section>
 
   <!-- THE STORY -->
