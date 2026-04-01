@@ -15,6 +15,15 @@
   <meta name="description" content="I grow developer audiences from zero. 150M+ organic impressions, 49M views in 10 months — no paid ads.">
   <meta name="author" content="Ryan Els">
 
+  <!-- Twitter / X Card — must come before OG tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@ryanels">
+  <meta name="twitter:creator" content="@ryanels">
+  <meta name="twitter:title" content="Ryan Els — Developer Audience Growth Specialist">
+  <meta name="twitter:description" content="I grow developer audiences from zero. 150M+ organic impressions, 49M views in 10 months — no paid ads.">
+  <meta name="twitter:image" content="https://ryan-els.vercel.app/og-image.jpg">
+  <meta name="twitter:image:alt" content="Ryan Els portfolio — Developer Audience Growth Specialist">
+
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://ryan-els.vercel.app">
@@ -23,14 +32,7 @@
   <meta property="og:image" content="https://ryan-els.vercel.app/og-image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-
-  <!-- Twitter / X Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@ryanels">
-  <meta name="twitter:creator" content="@ryanels">
-  <meta name="twitter:title" content="Ryan Els — Developer Audience Growth Specialist">
-  <meta name="twitter:description" content="I grow developer audiences from zero. 150M+ organic impressions, 49M views in 10 months — no paid ads.">
-  <meta name="twitter:image" content="https://ryan-els.vercel.app/og-image.jpg">
+  <meta property="og:image:alt" content="Ryan Els portfolio — Developer Audience Growth Specialist">
 <style>
   :root {
     --bg: #F5F2ED;
@@ -175,6 +177,8 @@
   .footer-links a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
   .footer-links a:hover { color: var(--accent); }
 
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
   @media (max-width: 640px) {
     .header-inner { grid-template-columns: 1fr; }
     .header-contact { text-align: left; }
@@ -195,7 +199,9 @@
         <h1>Ryan Els</h1>
         <p class="header-tagline">I build tech audiences from scratch. No ads, no fluff — just content that engineers actually want to read.</p>
         <div class="header-cta">
-          <a href="ryan-els-cv.pdf" download class="download-btn">↓ Download CV</a>
+          <a href="ryan-els-cv.pdf" download class="download-btn">
+            ↓ Download CV
+          </a>
         </div>
       </div>
       <div class="header-contact">
@@ -286,6 +292,7 @@
 
     <div class="featured-grid">
 
+      <!-- PERSONAL BRAND -->
       <div class="featured-card">
         <a href="https://x.com/ryanels/status/1887159542422614169" target="_blank" style="text-decoration:none;color:inherit;">
           <div class="featured-image"><img src="personal-2.1m.png" alt="2.1M views post"></div>
@@ -318,6 +325,7 @@
         </a>
       </div>
 
+      <!-- LINGO.DEV -->
       <div class="featured-card">
         <a href="https://x.com/lingodotdev/status/1925456886926569640" target="_blank" style="text-decoration:none;color:inherit;">
           <div class="featured-image"><img src="lingo-1.2m.png" alt="1.2M views post"></div>
