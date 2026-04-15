@@ -8,14 +8,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 
-  <!-- FAVICON -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231A1714'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-size='13' font-weight='700' fill='%23C84B2F'>RE</text></svg>">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231A1714'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-size='13' font-weight='700' fill='%231D4ED8'>RE</text></svg>">
 
-  <!-- SEO -->
   <meta name="description" content="I grow developer audiences from zero. 150M+ organic impressions, 49M views in 10 months — no paid ads.">
   <meta name="author" content="Ryan Els">
 
-<!-- Twitter / X Card — must come before OG tags -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@ryanels">
 <meta name="twitter:creator" content="@ryanels">
@@ -24,7 +21,6 @@
 <meta name="twitter:image" content="https://ryan-els.vercel.app/og-image.jpg">
 <meta name="twitter:image:alt" content="Ryan Els — Developer Audience Growth Specialist">
 
-<!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ryan-els.vercel.app/">
 <meta property="og:title" content="Ryan Els — Developer Audience Growth Specialist">
@@ -38,7 +34,8 @@
     --bg: #F5F2ED;
     --ink: #1A1714;
     --muted: #7A7370;
-    --accent: #C84B2F;
+    --accent: #1D4ED8;
+    --accent-hover: #1639A8;
     --rule: #D9D4CE;
     --card: #EFEBE5;
   }
@@ -72,12 +69,16 @@
 
   /* STATS */
   .stats { background: var(--ink); color: var(--bg); padding: 3rem 0; }
-  .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
   .stat { padding: 2rem; background: var(--ink); }
-  .stat-num { font-family: 'DM Serif Display', serif; font-size: clamp(2.2rem, 5vw, 3.5rem); line-height: 1; color: #fff; }
-  .stat-num span { color: var(--accent); }
+  .stat-num { font-family: 'DM Serif Display', serif; font-size: clamp(1.8rem, 3.5vw, 3rem); line-height: 1; color: #fff; }
+  .stat-num span { color: #5B8AF5; }
   .stat-label { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: #8a8480; margin-top: 0.5rem; }
   .stat-sub { font-size: 0.82rem; color: #8a8480; margin-top: 0.25rem; }
+
+  /* PLATFORM BADGES */
+  .platform-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.25rem; }
+  .platform-tag { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); background: rgba(29,78,216,0.08); border: 1px solid rgba(29,78,216,0.2); padding: 0.3rem 0.7rem; border-radius: 9999px; }
 
   /* SECTION LABELS & TITLES */
   .section-label { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 2rem; }
@@ -109,12 +110,26 @@
   .featured-caption { font-size: 0.95rem; line-height: 1.5; margin-top: 1rem; }
   .featured-meta { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--accent); margin-top: 0.5rem; }
 
+  /* SKILLS */
   .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
   .skill-block { background: var(--card); padding: 1.5rem; border-bottom: 2px solid var(--rule); transition: border-color 0.2s; }
   .skill-block:hover { border-color: var(--accent); }
   .skill-name { font-family: 'DM Mono', monospace; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
   .skill-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.5; }
 
+  /* EDUCATION */
+  .edu-grid { display: grid; gap: 1.5rem; }
+  .edu-card { background: var(--card); padding: 2rem; position: relative; overflow: hidden; }
+  .edu-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--accent); }
+  .edu-header { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.75rem; }
+  .edu-title { font-family: 'DM Serif Display', serif; font-size: 1.3rem; }
+  .edu-meta { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--muted); letter-spacing: 0.06em; white-space: nowrap; }
+  .edu-desc { font-size: 0.95rem; color: var(--muted); line-height: 1.6; margin-bottom: 1.25rem; }
+  .edu-wins { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .edu-wins li { font-size: 0.9rem; padding-left: 1.2rem; position: relative; line-height: 1.5; }
+  .edu-wins li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 0.8rem; }
+
+  /* TESTIMONIAL */
   .testimonial {
     background: var(--card);
     padding: 2.5rem;
@@ -148,7 +163,7 @@
     text-decoration: none;
     transition: all 0.2s ease;
   }
-  .download-btn:hover { background: #a13c27; transform: translateY(-1px); }
+  .download-btn:hover { background: var(--accent-hover); transform: translateY(-1px); }
 
   .download-btn-outline {
     display: inline-flex;
@@ -177,7 +192,9 @@
   .footer-links a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
   .footer-links a:hover { color: var(--accent); }
 
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  @media (max-width: 720px) {
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  }
 
   @media (max-width: 640px) {
     .header-inner { grid-template-columns: 1fr; }
@@ -198,6 +215,14 @@
         <p class="eyebrow">Social Media Manager · Developer Audience Specialist</p>
         <h1>Ryan Els</h1>
         <p class="header-tagline">I build tech audiences from scratch. No ads, no fluff — just content that engineers actually want to read.</p>
+        <div class="platform-tags">
+          <span class="platform-tag">X / Twitter</span>
+          <span class="platform-tag">Threads</span>
+          <span class="platform-tag">Facebook</span>
+          <span class="platform-tag">Instagram</span>
+          <span class="platform-tag">YouTube</span>
+          <span class="platform-tag">TikTok</span>
+        </div>
         <div class="header-cta">
           <a href="ryan-els-cv.pdf" download class="download-btn">
             ↓ Download CV
@@ -221,17 +246,22 @@
       <div class="stat">
         <div class="stat-num">49<span>M</span></div>
         <div class="stat-label">Organic views</div>
-        <div class="stat-sub">Lingo.dev — 10 months, zero ad spend</div>
+        <div class="stat-sub">Lingo.dev on X — 10 months, zero ad spend</div>
       </div>
       <div class="stat">
-        <div class="stat-num">110<span>M+</span></div>
-        <div class="stat-label">Personal impressions</div>
-        <div class="stat-sub">Personal brand — built in under a year</div>
+        <div class="stat-num">2<span>M+</span></div>
+        <div class="stat-label">Threads views</div>
+        <div class="stat-sub">Lingo.dev on Threads — first 90 days only</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">150<span>M+</span></div>
+        <div class="stat-label">Total impressions</div>
+        <div class="stat-sub">Across all platforms — entirely organic</div>
       </div>
       <div class="stat">
         <div class="stat-num">0<span>→</span>29.8<span>k</span></div>
         <div class="stat-label">Followers grown</div>
-        <div class="stat-sub">Personal brand (19k) + Lingo.dev (10.8k) — both from zero</div>
+        <div class="stat-sub">Personal (19k) + Lingo.dev (10.8k) — both from zero</div>
       </div>
     </div>
   </div>
@@ -244,6 +274,7 @@
     <div class="about-body">
       <p>I got my last job because a tech CEO found my personal account and reached out. That's the kind of content I make — the kind people in the industry actually follow.</p>
       <p>I understand developer culture from the inside. Seven years of self-directed study in JavaScript and web development means I can talk about code like someone who builds things, not someone who Googled the talking points. That's why the content lands.</p>
+      <p>I'm also formally trained in film and television production — which means I can handle the full video content pipeline from scripting through to final edit, not just write captions.</p>
     </div>
   </section>
 
@@ -257,11 +288,13 @@
           <span class="work-title">Social Media Manager · Lingo.dev</span>
           <span class="work-meta">May 2025 – March 2026 · Remote</span>
         </div>
-        <p class="work-desc">Built the company's social presence from zero to a genuine developer community. No paid promotion, no gimmicks.</p>
+        <p class="work-desc">Built the company's social presence from zero to a genuine developer community across multiple platforms. No paid promotion, no gimmicks.</p>
         <ul class="work-wins">
-          <li>Built the company's social presence from zero to 10.8k followers and 49.2M organic views in 10 months, with no paid promotion.</li>
+          <li>Grew the X account from zero to 10.8k followers and 49.2M organic views in 10 months, with no paid promotion or influencer partnerships.</li>
+          <li>Expanded to Threads, generating over 2M views within the first 90 days of launch.</li>
+          <li>Also managed content distribution across Facebook, Instagram, YouTube, and TikTok, broadening overall brand reach.</li>
           <li>Created content that went viral repeatedly within the developer community, with one post exceeding 1.2M views, by identifying trends that engineers actually care about.</li>
-          <li>Managed community replies with technical accuracy and personality, building genuine trust with senior engineers and developers.</li>
+          <li>Managed community replies with technical accuracy and personality — followers rated the account 9/10 in internal surveys.</li>
           <li>Tracked industry shifts — including the rise of AI-assisted coding — to keep the brand relevant and credible in fast-moving conversations.</li>
         </ul>
         <p style="margin-top:1.5rem; font-size:0.8rem; color:var(--muted);">See Featured Content below for example posts and screenshots.</p>
@@ -274,7 +307,7 @@
         </div>
         <p class="work-desc">Built a tech-focused personal account that became the direct reason I was hired. An inbound offer — the CEO came to me.</p>
         <ul class="work-wins">
-          <li>Grew a personal tech-focused account to 19k+ followers and 110M+ impressions in a year — the account that led directly to an inbound job offer from a tech CEO.</li>
+          <li>Grew a personal tech-focused X account to 19k+ followers and 110M+ impressions in a year — the account that led directly to an inbound job offer from a tech CEO.</li>
           <li>Consistently produced viral content by focusing on specific engineering debates (array indexing, library bloat, tooling wars), with top posts reaching 2.8M and 2.1M views.</li>
           <li>Built a trusted audience by engaging as a hobbyist programmer rather than a marketer — speaking to developers as a peer, not a brand.</li>
         </ul>
@@ -367,7 +400,11 @@
     <div class="skills-grid">
       <div class="skill-block">
         <p class="skill-name">Organic Growth</p>
-        <p class="skill-desc">Building audiences from zero without paid promotion. Twice.</p>
+        <p class="skill-desc">Building audiences from zero without paid promotion — done it twice, across multiple platforms.</p>
+      </div>
+      <div class="skill-block">
+        <p class="skill-name">Multi-Platform Management</p>
+        <p class="skill-desc">Active across X, Threads, Facebook, Instagram, YouTube, and TikTok — tailoring content strategy to each platform's audience and format.</p>
       </div>
       <div class="skill-block">
         <p class="skill-name">Community Management</p>
@@ -386,9 +423,48 @@
         <p class="skill-desc">7 years of self-directed study in JavaScript, web development, and web architecture.</p>
       </div>
       <div class="skill-block">
+        <p class="skill-name">Video Production</p>
+        <p class="skill-desc">Formally trained across the full pipeline — scriptwriting, filming, editing, and production planning. Hands-on experience from concept to final cut.</p>
+      </div>
+      <div class="skill-block">
         <p class="skill-name">Brand Voice</p>
         <p class="skill-desc">Writing for brands that need to sound like a person, not a press release.</p>
       </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section>
+    <p class="section-label">Education</p>
+    <div class="edu-grid">
+
+      <div class="edu-card">
+        <div class="edu-header">
+          <span class="edu-title">Diploma in Film &amp; Television Production</span>
+          <span class="edu-meta">Cape Town Film &amp; Television School · 1992 – 1995</span>
+        </div>
+        <p class="edu-desc">Three-year full-time program covering the complete video production pipeline — from concept through distribution.</p>
+        <ul class="edu-wins">
+          <li>Scriptwriting and pre-production planning</li>
+          <li>Camera work, lighting, and on-set production</li>
+          <li>Video editing and post-production</li>
+          <li>Film marketing and distribution fundamentals</li>
+        </ul>
+      </div>
+
+      <div class="edu-card">
+        <div class="edu-header">
+          <span class="edu-title">Self-Directed Technical Study</span>
+          <span class="edu-meta">2017 – Present</span>
+        </div>
+        <p class="edu-desc">7 years of independent study in software development — the foundation that makes the developer content authentic.</p>
+        <ul class="edu-wins">
+          <li>JavaScript and modern web development</li>
+          <li>Web architecture and system design concepts</li>
+          <li>Hands-on personal projects throughout</li>
+        </ul>
+      </div>
+
     </div>
   </section>
 
@@ -400,7 +476,7 @@
       The results speak for themselves. He grew our X account from near-zero to 10.8k followers and 49 million impressions in under 12 months, entirely organic, without paid distribution. He did this with a developer audience, which is one of the hardest groups to market to authentically. When we surveyed our followers, they rated the account 9 out of 10 on average.<br><br>
       What makes Ryan effective is that he's genuinely embedded in the world he's speaking to. He programs on the side, follows the tools, and understands the culture. His content feels like it comes from a peer. That's not something you can fake, and it's the reason the growth happened.<br><br>
       I'd recommend Ryan without hesitation for any role where a technical audience needs to be reached authentically."
-      <cite>— Max Prilutskiy, CEO & Co-founder, Lingo.dev<br>March 20, 2026</cite>
+      <cite>— Max Prilutskiy, CEO &amp; Co-founder, Lingo.dev<br>March 20, 2026</cite>
     </div>
 
     <p style="margin-top: 1.5rem;">
