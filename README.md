@@ -1,2 +1,2 @@
 # Ryan Els Portfolio
-Social Media Manger - Community Growth Specialist
+Social Media Manager | Content Creator | Community Growth
